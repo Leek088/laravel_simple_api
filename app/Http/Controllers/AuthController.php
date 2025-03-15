@@ -22,12 +22,19 @@ class AuthController extends Controller
         }
 
         $user = auth()->user();
-        $token = $user->createToken($user->name)->plainTextToken;
+        $token = $user->createToken($user->name, ['*'], now()->addHour())->plainTextToken;
 
         return ApiRespose::success([
             'message' => 'user looged successfully',
             'token' => $token,
             'user' => $user
         ]);
+    }
+
+    public function logout(): JsonResponse
+    {
+        auth()->user()->tokens()->delete();
+
+        return ApiRespose::success(['message' => 'user logout successfully']);
     }
 }

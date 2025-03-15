@@ -7,7 +7,9 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/status', fn(): JsonResponse => ApiRespose::success(['message' => 'API is running']));
-
-Route::apiResource('clients', ClientController::class);
-
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function (): void {
+    Route::apiResource('clients', ClientController::class);
+    Route::get('/logout', [AuthController::class, 'logout']);
+});
