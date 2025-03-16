@@ -20,9 +20,11 @@ class AuthController extends Controller
         if (!$attempt) {
             return ApiRespose::unauthorized(['message' => 'e-mail or password incorrect']);
         }
-        //teste
+
         $user = auth()->user();
-        $token = $user->createToken($user->name, ['*'], now()->addHour())->plainTextToken;
+        $abilities = json_decode($user->abilities, true);
+
+        $token = $user->createToken($user->name, $abilities, now()->addHour())->plainTextToken;
 
         return ApiRespose::success([
             'message' => 'user looged successfully',
