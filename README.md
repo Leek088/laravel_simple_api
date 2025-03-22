@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Laravel Simple API
 
 Este é um projeto de API simples desenvolvido com o framework Laravel. Ele fornece endpoints para autenticação e gerenciamento de clientes.
@@ -162,4 +161,3 @@ Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICEN
 Um exemplo simples, mas bem didatico e estuturado em REST, para criação de clients, como criar, atualizar, editar e deletar. 
 Api feita juntamente ao Sanctum, para login e logout, usando tokens e abilities para permissões.
 Banco de dados mysql com migrations.
->>>>>>> 97c213b2b98b206c43b00722cd9b0377dbe12832
