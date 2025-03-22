@@ -1,66 +1,163 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Simple API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este é um projeto de API simples desenvolvido com o framework Laravel. Ele fornece endpoints para autenticação e gerenciamento de clientes.
 
-## About Laravel
+## Estrutura do Projeto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+A estrutura do projeto é a seguinte:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```
+.editorconfig
+.env
+.env.example
+.gitattributes
+.gitignore
+artisan
+composer.json
+composer.lock
+package.json
+phpunit.xml
+vite.config.js
+.vscode/
+    launch.json
+app/
+    Http/
+    Models/
+    Providers/
+    Services/
+bootstrap/
+    app.php
+    providers.php
+    cache/
+config/
+    app.php
+    auth.php
+    cache.php
+    database.php
+    filesystems.php
+    logging.php
+    mail.php
+    queue.php
+    sanctum.php
+    services.php
+    session.php
+database/
+    .gitignore
+    factories/
+    migrations/
+    seeders/
+public/
+    .htaccess
+    index.php
+    robots.txt
+resources/
+    css/
+    js/
+    lang/
+    views/
+routes/
+    api.php
+    console.php
+    web.php
+storage/
+    app/
+    framework/
+    logs/
+tests/
+    Feature/
+    Unit/
+vendor/
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Instalação
 
-## Learning Laravel
+1. Clone o repositório:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    ```sh
+    git clone https://github.com/seu-usuario/laravel_simple_api.git
+    cd laravel_simple_api
+    ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. Instale as dependências do PHP:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    ```sh
+    composer install
+    ```
 
-## Laravel Sponsors
+3. Instale as dependências do Node.js:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    ```sh
+    npm install
+    ```
 
-### Premium Partners
+4. Copie o arquivo `.env.example` para `.env` e configure suas variáveis de ambiente:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    ```sh
+    cp .env.example .env
+    ```
 
-## Contributing
+5. Gere a chave da aplicação:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    ```sh
+    php artisan key:generate
+    ```
 
-## Code of Conduct
+6. Execute as migrações do banco de dados:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    ```sh
+    php artisan migrate
+    ```
 
-## Security Vulnerabilities
+7. Execute os seeders para popular o banco de dados:
+    ```sh
+    php artisan db:seed
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Executando o Projeto
 
-## License
+Para iniciar o servidor de desenvolvimento, execute:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```sh
+npm run dev
+```
+
+## Testes
+
+Para executar os testes, utilize o comando:
+
+```sh
+php artisan test
+```
+
+## Endpoints
+
+### Autenticação
+
+-   `POST /login`: Realiza o login do usuário.
+-   `GET /logout`: Realiza o logout do usuário autenticado.
+
+### Clientes
+
+-   `GET /clients`: Lista todos os clientes.
+-   `GET /clients/{id}`: Exibe um cliente específico.
+-   `POST /clients`: Cria um novo cliente.
+-   `PUT /clients/{id}`: Atualiza um cliente existente.
+-   `DELETE /clients/{id}`: Remove um cliente.
+
+## Contribuição
+
+Se você deseja contribuir com este projeto, por favor, siga os passos abaixo:
+
+1. Faça um fork do repositório.
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`).
+3. Commit suas alterações (`git commit -am 'Adiciona nova feature'`).
+4. Faça o push para a branch (`git push origin feature/nova-feature`).
+5. Crie um novo Pull Request.
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+=======
+Um exemplo simples, mas bem didatico e estuturado em REST, para criação de clients, como criar, atualizar, editar e deletar. 
+Api feita juntamente ao Sanctum, para login e logout, usando tokens e abilities para permissões.
+Banco de dados mysql com migrations.
